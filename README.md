@@ -171,19 +171,20 @@ application.secret_key = 'xxxxxxxxxxxxxxxxxxxxxx'
 ```
 * Now the virtual environment. In the catalog folder (lowercase)
 
-    ```
+```
 sudo pip install virtualenv
 sudo virtualenv venv
 ```
 
 * I enable all permissions for the new virtual environment `venv`. By doing so, `sudo` would not be used inside the environment.
 
-        ```
+```
   sudo chmod -R 777 venv
-        ```
-  I've found the hard way that if you want to install packages only in the virtual environment use only `pip install`, with `sudo` you install packages globally. Note that with `apt-get install` you call ubuntu packages while `pip install` is for those contained in [PyPA repository](https://packaging.python.org/)
+```
 
-  ```
+I've found the hard way that if you want to install packages only in the virtual environment use only `pip install`, with `sudo` you install packages globally. Note that with `apt-get install` you call ubuntu packages while `pip install` is for those contained in [PyPA repository](https://packaging.python.org/)
+
+```
     (venv) $:/var/www/Catalog/catalog$ sudo apt-get install python-setuptools
     (venv) $:/var/www/Catalog/catalog$ pip install Flask
     (venv) $:/var/www/Catalog/catalog$ pip install httplib2
@@ -194,40 +195,41 @@ sudo virtualenv venv
 ```
 * I created a virtual host config file that calls `catalog.wsgi`:
 
-    ```
-    $: sudo vim /etc/apache2/sites-available/catalog.conf
-    ```
+```
+sudo vim /etc/apache2/sites-available/catalog.conf
+```
 * In the newly created `catalog.conf` file, I pasted in the following lines of code.
-        ```
-        <VirtualHost *:80>
-            ServerName 52.27.162.111
-            ServerAdmin admin@52.27.162.111
-            ServerAlias ec2-52-27-162-111.us-west-2.compute.amazonaws.com
-            WSGIScriptAlias / /var/www/Catalog/catalog.wsgi
-            <Directory /var/www/Catalog/catalog/>
-                Order allow,deny
-                Allow from all
-            </Directory>
-            Alias /static /var/www/Catalog/catalog/static
-            <Directory /var/www/Catalog/catalog/static/>
-                Order allow,deny
-                Allow from all
-            </Directory>
-            <Directory "/var/www/Catalog/"> # this directory allows to add .htaccess file
-                AllowOverride All
-            </Directory>
-            ErrorLog ${APACHE_LOG_DIR}/error.log
-            LogLevel warn
-            CustomLog ${APACHE_LOG_DIR}/access.log combined
-        </VirtualHost>
+```
+<VirtualHost *:80>
+    ServerName 52.27.162.111
+    ServerAdmin admin@52.27.162.111
+    ServerAlias ec2-52-27-162-111.us-west-2.compute.amazonaws.com
+    WSGIScriptAlias / /var/www/Catalog/catalog.wsgi
+    <Directory /var/www/Catalog/catalog/>
+        Order allow,deny
+        Allow from all
+    </Directory>
+    Alias /static /var/www/Catalog/catalog/static
+    <Directory /var/www/Catalog/catalog/static/>
+        Order allow,deny
+        Allow from all
+    </Directory>
+    <Directory "/var/www/Catalog/"> # this directory allows to add .htaccess file
+        AllowOverride All
+    </Directory>
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    LogLevel warn
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
 
-        ```
+```
  * Enabled the Virtual Host.
 
-        ```
-        sudo a2ensite catalog.conf
-        sudo service apache2 restart
-        ```
+```
+sudo a2ensite catalog.conf
+sudo service apache2 restart
+```
+
 * I changed in the file `__init__.py` all the relative path to absolute path. For example `static/1_image.img` should become `/var/www/Catalog/catalog/static/1_image.img`.
 
 
