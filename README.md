@@ -295,11 +295,11 @@ Allowed the user `catalog` to be able to create database tables
 
 * Created postgresql database and amended the link to the database in the application, changing from sqlite to postgresql
 Now the relevant command is the following:
-    ```
+```
     create_engine('postgresql://catalog:DB-PASSWORD@localhost/catalog') #DB-PASSWORD is the password of the user `catalog`
+```
 
+* To get Google+ authorization working, I went on the Developer Console: http://console.developers.google.com, API Manager, Credentials and then I added to 'Client ID for Web application' panel, both `52.27.162.111` and `http://ec2-52-27-162-111.us-west-2.compute.amazonaws.com`
 
-* To get Google+ authorization working on the Developer Console: http://console.developers.google.com, I added both `52.27.162.111` and `http://ec2-52-27-162-111.us-west-2.compute.amazonaws.com`
-
-* To get Facebook authorization working,I added `http://ec2-52-27-162-111.us-west-2.compute.amazonaws.com` to app console.
+* To get Facebook authorization working, I added `http://ec2-52-27-162-111.us-west-2.compute.amazonaws.com` to app console.
 
