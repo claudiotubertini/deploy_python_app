@@ -253,7 +253,10 @@ Reference: [DigitalOcean](https://www.digitalocean.com/community/tutorials/how-t
 $ sudo locale-gen "en_US.UTF-8"
 $ sudo locale-gen "it_IT.UTF-8"
 ```
-and I could login through psql to the database. Reference [stackoverflow 1](http://stackoverflow.com/questions/2724121/) but also [stackoverflow 2](http://dba.stackexchange.com/questions/135127/incomplete-installation-with-unsupported-localepostgresql-database-creation-problem-with-localization)
+and I could login through psql to the database.
+Reference
+[stackoverflow 1](http://stackoverflow.com/questions/2724121/) but also
+[stackoverflow 2](http://dba.stackexchange.com/questions/135127/incomplete-installation-with-unsupported-localepostgresql-database-creation-problem-with-localization)
 
 * Added the postgres user: `catalog` and setup users parameters.
 Allowed the user `catalog` to be able to create database tables
