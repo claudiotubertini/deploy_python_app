@@ -142,14 +142,20 @@ cd catalog
 sudo mkdir static templates uploads
 ```
 * then I copy the application:
-```cp -a ~/P3-item-catalog/book_catalog/*  /var/www/Catalog/catalog
+
 ```
+cp -a ~/P3-item-catalog/book_catalog/*  /var/www/Catalog/catalog
+```
+
 and I change the owner of the files
+
 ```
-sudo chown -R www-data:www-data .
+sudo chown -R www-data:www-data
 ```
+
 ## The application.
 For sake of clarity I change the name of the main file, that that contains `app.run()`, to `__init__.py`.
+
 * In the `catalog` folder I put a wsgi file that will import `__init__.py` and it is that file that will be called by the apache wsgi server. This is the file `catalog.wsgi`:
 
 ```
