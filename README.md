@@ -303,3 +303,7 @@ Now the relevant command is the following:
 
 * To get Facebook authorization working, I added `http://ec2-52-27-162-111.us-west-2.compute.amazonaws.com` to app console.
 
+at the end of the setup I entered again in the file `/etc/ssh/sshd_config` changing
+```
+PasswordAuthentication no
+```
