@@ -17,6 +17,7 @@ I configured a secured remote virtual machine to host a data driven web appllica
 ### Setup Virtual Machine and SSH into the server
 Reference:
 [SSH](https://www.digitalocean.com/community/tutorials/how-to-configure-ssh-key-based-authentication-on-a-linux-server)
+
 [Ubuntu 14.04](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-14-04)
 
 The first time I logged into the server I used a private key supplied by udacity with the command:
